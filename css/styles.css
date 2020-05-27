@@ -1,0 +1,387 @@
+/* The below code was written by Christian Kennedy for the Udundi Coding Challenge - Junior Web Developer position. */
+/* Begin Sass Variables and Mixins */
+/* End Sass Variables and Mixins */
+html, body {
+  height: 100%;
+  margin: 0px;
+}
+
+/* Backup background; in case the .bg class object doesn't load */
+/*body {
+  background-image: $bg;
+  background-size: cover;
+  background-repeat: no-repeat;
+}*/
+img.bg {
+  content: url("../img/johannes-plenio-RwHv7LgeC7s-unsplash.png");
+  z-index: -2;
+  width: auto;
+  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+.sidebar-left {
+  height: 100%;
+  width: 28.68%;
+  background-color: #611818;
+}
+
+/*Hero section classes*/
+.hero {
+  position: absolute;
+  top: 47%;
+  left: 170px;
+  text-align: left;
+}
+.hero #hero-header {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.7s linear;
+  font-size: 224px;
+  font-weight: 400;
+  letter-spacing: 5.6px;
+  color: white;
+}
+.hero #clickable {
+  position: relative;
+}
+.hero .hero-btn {
+  margin: 0px 0px 0px 18px;
+  color: #611818;
+}
+.hero #details {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.7s linear;
+  font-family: Arial;
+  font-size: 24px;
+  color: white;
+  margin: -37px 0px 0px 75px;
+}
+
+.hero-active #hero-header {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 0.7s, opacity 0.7s linear;
+}
+.hero-active #details {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 0.7s, opacity 0.7s linear;
+}
+
+/*Popup animation classes*/
+.circle {
+  z-index: 2;
+  position: absolute;
+  bottom: 0px;
+  padding: 20px;
+  width: 0px;
+  height: 0px;
+  border-radius: 50%;
+  background-color: white;
+  -webkit-transition: all 0.7s ease;
+  -moz-transition: all 0.7s ease;
+  -o-transition: all 0.7s ease;
+  -ms-transition: all 0.7s ease;
+  transition: all 0.7s ease;
+}
+.circle #plus {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.7s linear;
+  margin: -30px 0px 0px -15px;
+  font-size: 30px;
+  color: #611818;
+}
+
+.square {
+  z-index: 2;
+  box-shadow: 0 4px 8px 8px rgba(0, 0, 0, 0.2), 8px 6px 8px 8px rgba(0, 0, 0, 0.19);
+  padding: 72px 72px 67px 66px;
+  position: absolute;
+  bottom: -45px;
+  left: -50px;
+  width: 580px;
+  height: 702px;
+  margin: 0px 0px 0px -45px;
+  line-height: 30px;
+  border-radius: 0%;
+  background-color: white;
+  -webkit-transition: all 0.7s ease;
+  -moz-transition: all 0.7s ease;
+  -o-transition: all 0.7s ease;
+  -ms-transition: all 0.7s ease;
+  transition: all 0.7s ease;
+}
+.square #plus {
+  visibility: hidden;
+  opacity: 0;
+  font-size: 0px;
+  transition: visibility 0s 0.1s, opacity 0.1s linear;
+}
+
+.text-invisible {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s linear;
+  font-size: 0px;
+}
+.text-invisible #popup-x {
+  position: absolute;
+}
+.text-invisible #popup-line {
+  position: absolute;
+}
+.text-invisible #read-more {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0px;
+  height: 0px;
+}
+
+.text-visible {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.2s linear;
+  text-align: left;
+}
+.text-visible #popup-x {
+  color: #611818;
+  font-size: 35px;
+  right: 10px;
+  top: 10px;
+}
+.text-visible #popup-header {
+  font-size: 60px;
+  margin-left: 10px;
+  color: #611818;
+}
+.text-visible #popup-line {
+  position: static;
+  margin: 10px 0px 0px 0px;
+  padding: 0px 0px 10px 0px;
+  width: 60%;
+}
+.text-visible #popup-details {
+  letter-spacing: 0.35px;
+  font-size: 14px;
+  font-weight: 400px;
+  color: #505050;
+}
+.text-visible #read-more {
+  position: static;
+  border: 0px;
+  margin-top: 30px;
+  letter-spacing: 2px;
+  width: 200px;
+  height: 50px;
+  background: linear-gradient(to right, #611818, #A36754);
+  font-size: 15px;
+  color: white;
+}
+
+/* Social Icons */
+.social-icons {
+  position: absolute;
+  top: 81%;
+  left: 93%;
+}
+.social-icons #facebook {
+  position: absolute;
+  top: 0px;
+}
+.social-icons #facebook:hover {
+  opacity: 0.7;
+}
+.social-icons #instagram {
+  position: absolute;
+  top: 90px;
+}
+.social-icons #instagram:hover {
+  opacity: 0.7;
+}
+
+/*fadeInDown Animation Elements*/
+@keyframes fadeInDown {
+  from {
+    transform: translate3d(0, -50px, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadeInDown {
+  from {
+    transform: translate3d(0, -50px, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+.animated {
+  animation-duration: 1.2s;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 1.2s;
+  -webkit-animation-fill-mode: both;
+}
+
+.animatedFadeInDown {
+  opacity: 0;
+}
+
+.fadeInDown {
+  opacity: 0;
+  animation-name: fadeInDown;
+  -webkit-animation-name: fadeInDown;
+}
+
+/*Begin Display Size Breakpoints*/
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .hero {
+    left: 30px;
+  }
+  .hero .hero-btn {
+    margin-left: 8px;
+    margin-bottom: -15px;
+  }
+  .hero #hero-header {
+    font-size: 100px;
+  }
+  .hero #details {
+    font-size: 16px;
+    margin-left: 40px;
+    margin-top: -8px;
+  }
+
+  .circle {
+    padding: 12px;
+  }
+
+  .square {
+    padding: 35px 28px 25px 30px;
+    width: 350px;
+    height: 400px;
+    line-height: 10px;
+  }
+
+  .text-visible #popup-header {
+    font-size: 40px;
+  }
+  .text-visible #popup-details {
+    font-size: 10px;
+  }
+  .text-visible #read-more {
+    font-size: 10px;
+    width: 100px;
+    height: 40px;
+  }
+
+  .social-icons {
+    top: 82%;
+    left: 85%;
+  }
+  .social-icons #facebook {
+    transform: scale(0.7);
+  }
+  .social-icons #instagram {
+    transform: scale(0.7);
+    top: 60px;
+  }
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 601px) and (max-width: 768px) {
+  .hero {
+    left: 100px;
+  }
+  .hero .hero-btn {
+    margin-left: 12px;
+    margin-bottom: -10px;
+  }
+  .hero #hero-header {
+    font-size: 140px;
+  }
+  .hero #details {
+    font-size: 18px;
+    margin-left: 50px;
+    margin-top: -20px;
+  }
+
+  .circle {
+    padding: 15px;
+  }
+
+  .square {
+    padding: 35px 28px 25px 30px;
+    width: 400px;
+    height: 500px;
+    line-height: 15px;
+  }
+
+  .text-visible #popup-header {
+    font-size: 40px;
+  }
+  .text-visible #popup-details {
+    font-size: 11px;
+  }
+
+  .social-icons {
+    top: 82%;
+    left: 85%;
+  }
+  .social-icons #facebook {
+    transform: scale(0.8);
+  }
+  .social-icons #instagram {
+    transform: scale(0.8);
+    top: 70px;
+  }
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 769px) and (max-width: 992px) {
+  .hero {
+    left: 120px;
+  }
+  .hero .hero-btn {
+    margin-left: 15px;
+  }
+  .hero #hero-header {
+    font-size: 180px;
+  }
+  .hero #details {
+    font-size: 20px;
+    margin-left: 60px;
+    margin-top: -30px;
+  }
+
+  .circle {
+    padding: 15px;
+  }
+
+  .square {
+    padding: 72px 72px 67px 66px;
+  }
+
+  .social-icons {
+    top: 81%;
+    left: 88%;
+  }
+  .social-icons #facebook {
+    transform: scale(0.9);
+  }
+  .social-icons #instagram {
+    transform: scale(0.9);
+    top: 80px;
+  }
+}
+/*End Display Size Breakpoints*/
+
+/*# sourceMappingURL=styles.css.map */

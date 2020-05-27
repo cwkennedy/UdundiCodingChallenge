@@ -1,0 +1,482 @@
+/* The below code was written by Christian Kennedy for the Udundi Coding Challenge - Junior Web Developer position. */
+
+/* Begin Sass Variables and Mixins */
+$bg: url("../img/johannes-plenio-RwHv7LgeC7s-unsplash.png");
+
+$header-anim-time: 1.2s;
+$header-anim-top: -50px;
+$fade-time: 0.7s;
+$text-appear-time: 0.2s;
+
+$hero-top: 47%;
+$hero-left: 170px;
+$hero-color: white;
+$hero-btn-margin: 0px 0px 0px 18px;
+$hero-header-size: 224px;
+$hero-header-weight: 400;
+$hero-header-spacing: 5.6px;
+$hero-details-size: 24px;
+$hero-details-margin: -37px 0px 0px 75px;
+
+$sidebar-color: #611818;
+$sidebar-height: 100%;
+$sidebar-width: 28.68%;
+
+$circle-padding: 20px;
+
+$popup-width: 580px;
+$popup-height: 702px;
+$popup-bottom: -45px;
+$popup-left: -50px;
+$popup-margin: 0px 0px 0px -45px;
+$popup-lineheight: 30px;
+$popup-padding: 72px 72px 67px 66px;
+
+$popup-header-size: 60px;
+$popup-header-margin-left: 10px;
+
+$popup-line-margin: 10px 0px 0px 0px;
+$popup-line-padding: 0px 0px 10px 0px;
+$popup-line-width: 60%;
+
+$popup-details-spacing: 0.35px;
+$popup-details-height: 0.35px;
+$popup-details-size: 14px;
+$popup-details-color: #505050;
+$popup-details-weight: 400px;
+
+$popup-read-margin-top: 30px;
+$popup-read-spacing: 2px;
+$popup-read-width: 200px;
+$popup-read-height: 50px;
+$popup-read-size: 15px;
+
+$btn-plus-size: 30px;
+$btn-plus-margin: -30px 0px 0px -15px;
+
+$btn-x-size: 35px;
+$btn-x-pad: 10px;
+
+$social-top: 81%;
+$social-left: 93%;
+$social-size: 40px;
+
+@mixin front {
+  z-index: 2;
+}
+
+@mixin shadow{
+  box-shadow: 0 4px 8px 8px rgba(0, 0, 0, 0.2), 8px 6px 8px 8px rgba(0, 0, 0, 0.19);
+}
+
+@mixin visible{
+  visibility: visible;
+  opacity: 1;
+}
+
+@mixin invisible{
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* End Sass Variables and Mixins */
+
+
+html, body {
+    height: 100%;
+    margin: 0px;
+}
+    
+/* Backup background; in case the .bg class object doesn't load */
+body {
+  background-image: $bg;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+img.bg {
+  content: $bg;
+  z-index: -2;
+  width: auto;
+  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+.sidebar-left{
+  height: $sidebar-height;
+  width: $sidebar-width;
+  background-color: $sidebar-color;
+}
+
+/*Hero section classes*/
+.hero{
+  position: absolute;
+  top: $hero-top;
+  left: $hero-left;
+  text-align: left;
+  
+  #hero-header{
+    @include visible;
+    transition: opacity $fade-time linear;
+    font-size: $hero-header-size;
+    font-weight: $hero-header-weight;
+    letter-spacing: $hero-header-spacing;
+    color: $hero-color;
+  }
+  
+  #clickable{
+    position: relative;
+  }
+  
+  .hero-btn{
+    margin: $hero-btn-margin;
+    color: $sidebar-color;
+  }
+  #details {
+    @include visible;
+    transition: opacity $fade-time linear;
+    font-family: Arial;
+    font-size: $hero-details-size;
+    color: $hero-color;
+    margin: $hero-details-margin;
+  }
+}
+
+.hero-active{
+  #hero-header{
+    @include invisible;
+    transition: visibility 0s $fade-time, opacity $fade-time linear;
+  }
+  #details{
+    @include invisible;
+    transition: visibility 0s $fade-time, opacity $fade-time linear;
+  }
+}
+
+/*Popup animation classes*/
+.circle{
+  @include front;
+  position: absolute;
+  bottom: 0px;
+  padding: $circle-padding;
+  width: 0px;
+  height: 0px;
+  border-radius: 50%;
+  
+  background-color: $hero-color;
+  -webkit-transition: all $fade-time ease;  
+  -moz-transition: all $fade-time ease;
+  -o-transition: all $fade-time ease;
+  -ms-transition: all $fade-time ease;
+  transition: all $fade-time ease;
+  
+  #plus{
+    @include visible;
+    transition: opacity $fade-time linear;
+    margin: $btn-plus-margin;
+    font-size: $btn-plus-size;
+    color: $sidebar-color;
+  }
+  
+}
+
+.square{
+  @include front;
+  @include shadow;
+  padding: $popup-padding;
+  
+  position: absolute;
+  bottom: $popup-bottom;
+  left: $popup-left;
+  width: $popup-width;
+  height: $popup-height;
+  margin: $popup-margin;
+  line-height: $popup-lineheight;
+  border-radius: 0%;
+  background-color: $hero-color;
+  
+  -webkit-transition: all $fade-time ease;
+  -moz-transition: all $fade-time ease;
+  -o-transition: all $fade-time ease;
+  -ms-transition: all $fade-time ease;
+  transition: all $fade-time ease;
+  
+  #plus{
+    @include invisible;
+    font-size: 0px;
+    transition: visibility 0s 0.1s, opacity 0.1s linear;
+  }
+}
+
+.text-invisible {
+  @include invisible;
+  transition: opacity $text-appear-time linear;
+  font-size: 0px;
+  
+  #popup-x{
+    position: absolute;
+  }
+  
+  #popup-line{
+    position: absolute;
+  }
+  
+  #read-more{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0px;
+    height: 0px;
+  }
+}
+
+.text-visible {
+  @include visible;
+  transition: opacity $text-appear-time linear;
+  text-align: left;
+  
+  #popup-x{
+    color: $sidebar-color;
+    font-size: $btn-x-size;
+    right: $btn-x-pad;
+    top: $btn-x-pad;
+  }
+  
+  #popup-header{
+    font-size: $popup-header-size;
+    margin-left: $popup-header-margin-left;
+    color: $sidebar-color;
+  }
+  
+  #popup-line{
+    position: static;
+    margin: $popup-line-margin;
+    padding: $popup-line-padding;
+    width: $popup-line-width;
+  }
+  
+  #popup-details{
+    letter-spacing: $popup-details-spacing;
+    font-size: $popup-details-size;
+    font-weight: $popup-details-weight;
+    color: $popup-details-color;
+  }
+  
+  #read-more{
+    position: static;
+    border: 0px;
+    margin-top: $popup-read-margin-top;
+    letter-spacing: $popup-read-spacing;
+    width: $popup-read-width;
+    height: $popup-read-height;
+    background: linear-gradient(to right, #611818, #A36754);
+    font-size: $popup-read-size;
+    color: $hero-color;
+  }
+  
+}
+
+/* Social Icons */
+.social-icons{
+  position: absolute;
+  top: $social-top;
+  left: $social-left;
+  #facebook{
+    position: absolute;
+    top: 0px;
+    &:hover{
+      opacity: 0.7;
+    }
+  }
+  #instagram{
+    position: absolute;
+    top: 90px;
+    &:hover{
+      opacity: 0.7;
+    }
+  }
+}
+
+/*fadeInDown Animation Elements*/
+@keyframes fadeInDown {
+    from {
+        transform: translate3d(0,$header-anim-top,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes fadeInDown {
+    from {
+        transform: translate3d(0,$header-anim-top,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
+
+.animated {
+    animation-duration: $header-anim-time;
+    animation-fill-mode: both;
+    -webkit-animation-duration: $header-anim-time;
+    -webkit-animation-fill-mode: both
+}
+
+.animatedFadeInDown {
+    opacity: 0
+}
+
+.fadeInDown {
+    opacity: 0;
+    animation-name: fadeInDown;
+    -webkit-animation-name: fadeInDown;
+}
+
+
+/*Begin Display Size Breakpoints*/
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .hero{
+    left: 30px;
+    .hero-btn{
+      margin-left: 8px;
+      margin-bottom: -15px;
+    }
+    #hero-header{
+      font-size: 100px;
+    }
+    #details{
+      font-size: 16px;
+      margin-left: 40px;
+      margin-top: -8px;
+    }
+  }
+  .circle{
+    padding: 12px;
+  }
+  .square{
+    padding: 35px 28px 25px 30px;
+    width: 350px;
+    height: 400px;
+    line-height: 10px;
+  }
+  .text-visible{
+    #popup-header{
+      font-size: 40px;
+    }
+    #popup-details{
+      font-size: 10px;
+    }
+    #read-more{
+      font-size: 10px;
+      width: 100px;
+      height: 40px;
+    }
+  }
+  .social-icons{
+    top: 82%;
+    left: 85%;
+    #facebook{
+      transform: scale(0.7);
+    }
+    #instagram{
+      transform: scale(0.7);
+      top: 60px;
+    }
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 601px) and (max-width: 768px){
+  .hero{
+    left: 100px;
+    .hero-btn{
+      margin-left: 12px;
+      margin-bottom: -10px;
+    }
+    #hero-header{
+      font-size: 140px;
+    }
+    #details{
+      font-size: 18px;
+      margin-left: 50px;
+      margin-top: -20px;
+    }
+  }
+  .circle{
+    padding: 15px;
+  }
+  .square{
+    padding: 35px 28px 25px 30px;
+    width: 400px;
+    height: 500px;
+    line-height: 15px;
+  }
+  .text-visible{
+    #popup-header{
+      font-size: 40px;
+    }
+    #popup-details{
+      font-size: 11px;
+    }
+  }
+  .social-icons{
+    top: 82%;
+    left: 85%;
+    #facebook{
+      transform: scale(0.8);
+    }
+    #instagram{
+      transform: scale(0.8);
+      top: 70px;
+    }
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 769px) and (max-width: 992px) {
+  .hero{
+    left: 120px;
+    .hero-btn{
+      margin-left: 15px;
+    }
+    #hero-header{
+      font-size: 180px;
+    }
+    #details{
+      font-size: 20px;
+      margin-left: 60px;
+      margin-top: -30px;
+    }
+  }
+  .circle{
+    padding: 15px;
+  }
+  .square{
+    padding: $popup-padding;
+  }
+  .social-icons{
+    top: 81%;
+    left: 88%;
+    #facebook{
+      transform: scale(0.9);
+    }
+    #instagram{
+      transform: scale(0.9);
+      top: 80px;
+    }
+  }
+}
+
+/*End Display Size Breakpoints*/
+

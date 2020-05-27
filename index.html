@@ -1,0 +1,91 @@
+<!--
+The below code was written by Christian Kennedy for the Udundi Coding Challenge - Junior Web Developer position.
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- Title and description-->
+		<title>Udundi Coding Challenge - Christian Kennedy</title>
+		<meta name="description" content="Christian Kennedy's Udundi Coding Challenge Submission">
+		<!-- Stylesheets and Scripts -->
+		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="css/styles.css">
+		<script>
+			/*Below function controls the Popup animation*/
+			var clicked = false;
+			var animation_over = true;
+			function popupClick(btn){
+				var popup = document.getElementById("popup");
+				var text = document.getElementById("popup-text");
+				var hero = document.getElementById("hero");
+			    if(clicked==false&&animation_over==true&&btn==1){
+			    	animation_over = false;
+			        popup.classList.toggle('square');
+			        hero.classList.toggle('hero-active');
+			        setTimeout(function(){ text.classList.toggle('text-visible'); clicked = true; animation_over = true; }, 700);
+			    }else if(clicked==true&&animation_over==true&&btn==2){
+			    	animation_over = false;
+			    	text.classList.toggle('text-visible');
+			    	hero.classList.toggle('hero-active');
+			        popup.classList.toggle('square');
+			        setTimeout(function(){ clicked = false; animation_over = true; }, 700);
+			    }
+			}
+		</script>	
+	</head>
+	<body>
+		<!-- Background Image -->
+		<img class="bg">
+		<!-- Left Sidebar -->
+		<div class="sidebar-left"></div>
+		<!-- Hero -->
+		<div id="hero" class="hero">
+			<!-- Hero Header -->
+			<div class="animated animatedFadeInDown fadeInDown">
+				<div id="hero-header">Explore</div>
+			</div>
+			 <!-- 'More Details' button -->
+			<span id="clickable" onclick="popupClick(1)">
+				<!-- Pop-up box -->
+				<span id="popup" class="hero-btn circle" onclick="popupClick(1)">
+					<!-- Plus icon -->
+					<svg id="plus" class="bi bi-plus" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+					  <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
+					  <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
+					</svg>
+					<!-- Popup text -->
+					<span id="popup-text" class="text-invisible">
+						<!-- Popup Header -->
+						<span id="popup-header">Explore</span>
+						<!-- X icon -->
+						<svg id="popup-x" onclick="popupClick(2)" class="bi bi-x" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+						  <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"/>
+						  <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"/>
+						</svg><br>
+						<!-- Gradient line -->
+						<img id="popup-line" src="img/line.png"><br>
+						<!-- Popup details -->
+						<span id="popup-details">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?</span>
+						<br>
+						<!-- 'Read More' button -->
+						<button id="read-more">READ MORE</button>
+					</span>
+				</span>
+				<div id="details">More Details</div>
+			</span>
+		</div>
+		<!-- Social buttons -->
+		<div class="social-icons">
+			<a id="facebook" href="#facebook"><img src="img/facebook.png"></a>
+			<a id="instagram" href="#instagram"><img src="img/instagram.png"></a>
+		</div>
+	</body>
+</html>
